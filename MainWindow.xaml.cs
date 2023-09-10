@@ -47,7 +47,7 @@ namespace CodeForcesDRP
 
         private async void SetDiscordStatus_Click(object sender, RoutedEventArgs e)
         {
-            await discord.Drp.SetStatus(_problem, problem_letter.Text[0]);
+            await discord.Drp.SetStatus(_problem, problem_letter.Text[0], isPrivate.IsEnabled);
         }
     }
 }
