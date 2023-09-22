@@ -8,7 +8,7 @@ namespace CodeForcesDRP.discord
 {
     public class Drp
     {
-        private static DiscordRPC? client;
+        private static DiscordRPC client;
 
         public static Task SetStatus(Problem _problename, char _problemletter, bool _isPrivate)
         {

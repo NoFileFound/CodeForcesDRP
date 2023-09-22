@@ -8,7 +8,6 @@ namespace CodeForcesDRP.api
 {
     public class ApiImplementation
     {
-
         private static JObject? _info;
 
         public static void InvokeError(string title, string message)
@@ -30,7 +29,7 @@ namespace CodeForcesDRP.api
                 HttpResponseMessage response = await httpClient.GetAsync("https://codeforces.com/api/problemset.problems");
                 if (response.IsSuccessStatusCode)
                 {
-                    Console.WriteLine("Received data");
+                    Console.WriteLine("received data");
                     _info = JObject.Parse(await response.Content.ReadAsStringAsync());
                     return _info;
                 }

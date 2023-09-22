@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CodeForcesDRP"
         mc:Ignorable="d"
-        Title="CF Discord Rich Presence" Height="177" Width="258" ResizeMode="CanMinimize">
+        Title="Code Forces RCP" Height="177" Width="258" ResizeMode="CanMinimize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Contest ID" FontSize="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14,5,0,0" Height="16" Width="60" />
-        <TextBox Grid.Row="0" Name="contest_name" IsEnabled="True" Margin="10,21,161,130"/>
+        <TextBlock Text="Contest ID" FontSize="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14,0,0,0" Height="16" Width="60" />
+        <TextBox Grid.Row="0" Name="contest_name" IsEnabled="True" Margin="10,13,161,138"/>
         <Button Content="Find Problem" Click="FindContestProblem_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,117,0,0" />
-        <TextBlock Text="Problem ID" FontSize="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="178,5,0,0" Height="16" Width="60" />
-        <CheckBox x:Name="isPrivate" Margin="10,58,179,102" Content="Private?"/>
-        <ComboBox Name="problem_letter" Width="41" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="178,21,0,0">
+        <TextBlock Text="Problem ID" FontSize="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="170,1,0,0" Height="16" Width="60" />
+        <CheckBox x:Name="isPrivate" Margin="11,53,179,107" Content="Private" Checked="SetPrivateSolution_Checked" Unchecked="SetPrivateSolution_Unchecked"/>
+        <ComboBox Name="problem_letter" Width="40" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="170,15,0,0">
             <ComboBoxItem Content="A" />
             <ComboBoxItem Content="B" />
             <ComboBoxItem Content="C" />
@@ -32,6 +32,6 @@
             <ComboBoxItem Content="L" />
             <ComboBoxItem Content="M" />
         </ComboBox>
-        <Button Name="set_discord_status" IsEnabled="false" Content="Set Status" Click="SetDiscordStatus_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="149,117,0,0" Width="70" />
+        <Button Name="set_discord_status" IsEnabled="false" Content="Set Status" Click="SetDiscordStatus_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="155,117,0,0" Width="70" />
     </Grid>
 </Window>

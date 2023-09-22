@@ -11,6 +11,7 @@ namespace CodeForcesDRP
     public partial class MainWindow : Window
     {
         private api.Problem _problem;
+        private bool isPrivateSolution;
 
         public MainWindow()
         {
@@ -19,10 +20,8 @@ namespace CodeForcesDRP
 
         private async void FindContestProblem_Click(object sender, RoutedEventArgs e)
         {
-            if (set_discord_status.IsEnabled)
-            {
-                set_discord_status.IsEnabled = false;
-            }
+            set_discord_status.IsEnabled = false;
+
             if (problem_letter.Text.Length == 0)
             {
                 api.ApiImplementation.InvokeError("CodeForces", "Please select problem id.");
@@ -45,9 +44,19 @@ namespace CodeForcesDRP
             }
         }
 
+        private void SetPrivateSolution_Checked(object sender, RoutedEventArgs e)
+        {
+            this.isPrivateSolution = true;
+        }
+
+        private void SetPrivateSolution_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.isPrivateSolution = false;
+        }
+
         private async void SetDiscordStatus_Click(object sender, RoutedEventArgs e)
         {
-            await discord.Drp.SetStatus(_problem, problem_letter.Text[0], isPrivate.IsEnabled);
+            await discord.Drp.SetStatus(_problem, problem_letter.Text[0], this.isPrivateSolution);
         }
     }
 }
