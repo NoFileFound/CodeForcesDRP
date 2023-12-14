@@ -1,18 +1,20 @@
-﻿using System;
-using System.Threading.Tasks;
-using NetDiscordRpc;
-using NetDiscordRpc.RPC;
+﻿using DiscordRPC;
 using CodeForcesDRP.api;
+using CodeForcesDRP.parser;
 
 namespace CodeForcesDRP.discord
 {
     public class Drp
     {
-        private static DiscordRPC client;
+        private static DiscordRpcClient? client = null;
 
-        public static Task SetStatus(Problem _problename, char _problemletter, bool _isPrivate)
+        public static void InitializationRPC(ConfigInfo config, Problem _problename, char _problemletter, bool _isPrivate)
         {
-            client = new DiscordRPC(""); // your application id.
+            if(client != null)
+            {
+                client.Dispose();
+            }
+            client = new DiscordRpcClient(config.ApplicationID);
             client.Initialize();
 
             if (!_isPrivate)
@@ -32,12 +34,12 @@ namespace CodeForcesDRP.discord
             {
                 client.SetPresence(new RichPresence()
                 {
-                    Details = "TOP SECRET",
+                    Details = "Problem is unavailable.",
                     Timestamps = Timestamps.Now
                 });
             }
+
             client.Invoke();
-            return Task.CompletedTask;
         }
     }
 }
